@@ -71,22 +71,22 @@ class CompanyApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for addInventory
+     * Test case for getParcelById
      *
-     * adds an inventory item.
+     * returns Parcel details by id.
      *
      */
-    public function testAddInventory()
+    public function testGetParcelById()
     {
     }
 
     /**
-     * Test case for getParcelDetails
+     * Test case for submitParcel
      *
-     * searches inventory.
+     * submit new Parcel.
      *
      */
-    public function testGetParcelDetails()
+    public function testSubmitParcel()
     {
     }
 }
