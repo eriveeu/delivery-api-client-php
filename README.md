@@ -67,13 +67,13 @@ $apiInstance = new Swagger\Client\Api\CompanyApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\Parcel(); // \Swagger\Client\Model\Parcel | Inventory item to add
+$parcel_id = "parcel_id_example"; // string | Parcel ID
 
 try {
-    $result = $apiInstance->addInventory($body);
+    $result = $apiInstance->getParcelById($parcel_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CompanyApi->addInventory: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CompanyApi->getParcelById: ', $e->getMessage(), PHP_EOL;
 }
 
 // Configure API key authorization: clientId
@@ -87,13 +87,13 @@ $apiInstance = new Swagger\Client\Api\CompanyApi(
     new GuzzleHttp\Client(),
     $config
 );
-$parcel_id = "parcel_id_example"; // string | Parcel ID
+$body = new \Swagger\Client\Model\Parcel(); // \Swagger\Client\Model\Parcel | Parcel to submit
 
 try {
-    $result = $apiInstance->getParcelDetails($parcel_id);
+    $result = $apiInstance->submitParcel($body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CompanyApi->getParcelDetails: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CompanyApi->submitParcel: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -104,8 +104,8 @@ All URIs are relative to *https://dev.greentohome.at/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CompanyApi* | [**addInventory**](docs/Api/CompanyApi.md#addinventory) | **POST** /company/parcels/parcel | adds an inventory item
-*CompanyApi* | [**getParcelDetails**](docs/Api/CompanyApi.md#getparceldetails) | **GET** /company/parcels/parcel/{parcelId} | searches inventory
+*CompanyApi* | [**getParcelById**](docs/Api/CompanyApi.md#getparcelbyid) | **GET** /company/parcels/parcel/{parcelId} | returns Parcel details by id
+*CompanyApi* | [**submitParcel**](docs/Api/CompanyApi.md#submitparcel) | **POST** /company/parcels/parcel | submit new Parcel
 
 ## Documentation For Models
 
