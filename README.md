@@ -20,7 +20,7 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
     }
   ],
   "require": {
-    "newmobilityenterprise/greentohome-apiclient-php": "*@dev"
+    "newmobilityenterprise/gth-api-client": "*@dev"
   }
 }
 ```
