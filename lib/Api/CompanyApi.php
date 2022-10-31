@@ -117,6 +117,242 @@ class CompanyApi
     }
 
     /**
+     * Operation deleteParcelById
+     *
+     * delete Parcel
+     *
+     * @param  string $parcel_id Parcel ID (required)
+     *
+     * @throws \GreenToHome\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteParcelById($parcel_id)
+    {
+        $this->deleteParcelByIdWithHttpInfo($parcel_id);
+    }
+
+    /**
+     * Operation deleteParcelByIdWithHttpInfo
+     *
+     * delete Parcel
+     *
+     * @param  string $parcel_id Parcel ID (required)
+     *
+     * @throws \GreenToHome\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteParcelByIdWithHttpInfo($parcel_id)
+    {
+        $request = $this->deleteParcelByIdRequest($parcel_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            
+            
+            
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteParcelByIdAsync
+     *
+     * delete Parcel
+     *
+     * @param  string $parcel_id Parcel ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteParcelByIdAsync($parcel_id)
+    {
+        return $this->deleteParcelByIdAsyncWithHttpInfo($parcel_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteParcelByIdAsyncWithHttpInfo
+     *
+     * delete Parcel
+     *
+     * @param  string $parcel_id Parcel ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteParcelByIdAsyncWithHttpInfo($parcel_id)
+    {
+        $returnType = '';
+        $request = $this->deleteParcelByIdRequest($parcel_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteParcelById'
+     *
+     * @param  string $parcel_id Parcel ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteParcelByIdRequest($parcel_id)
+    {
+
+        // verify the required parameter 'parcel_id' is set
+        if ($parcel_id === null || (is_array($parcel_id) && count($parcel_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $parcel_id when calling deleteParcelById'
+            );
+        }
+
+        $resourcePath = '/company/parcels/parcel/{parcelId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($parcel_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'parcelId' . '}',
+                ObjectSerializer::toPathValue($parcel_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                []
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                [],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('key');
+        if ($apiKey !== null) {
+            $queryParams['key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getParcelById
      *
      * returns Parcel details by id
@@ -688,6 +924,311 @@ class CompanyApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateParcelById
+     *
+     * update Parcel status
+     *
+     * @param  string $parcel_id Parcel ID (required)
+     * @param  \GreenToHome\Model\ParcelStatus $parcel_status Parcel to be updated (optional)
+     *
+     * @throws \GreenToHome\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \GreenToHome\Model\ResolvedParcel
+     */
+    public function updateParcelById($parcel_id, $parcel_status = null)
+    {
+        list($response) = $this->updateParcelByIdWithHttpInfo($parcel_id, $parcel_status);
+        return $response;
+    }
+
+    /**
+     * Operation updateParcelByIdWithHttpInfo
+     *
+     * update Parcel status
+     *
+     * @param  string $parcel_id Parcel ID (required)
+     * @param  \GreenToHome\Model\ParcelStatus $parcel_status Parcel to be updated (optional)
+     *
+     * @throws \GreenToHome\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \GreenToHome\Model\ResolvedParcel, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateParcelByIdWithHttpInfo($parcel_id, $parcel_status = null)
+    {
+        $request = $this->updateParcelByIdRequest($parcel_id, $parcel_status);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+            
+                case 200:
+                    if ('\GreenToHome\Model\ResolvedParcel' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\GreenToHome\Model\ResolvedParcel' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\GreenToHome\Model\ResolvedParcel', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            
+            
+            }
+
+            $returnType = '\GreenToHome\Model\ResolvedParcel';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\GreenToHome\Model\ResolvedParcel',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            
+            
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateParcelByIdAsync
+     *
+     * update Parcel status
+     *
+     * @param  string $parcel_id Parcel ID (required)
+     * @param  \GreenToHome\Model\ParcelStatus $parcel_status Parcel to be updated (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateParcelByIdAsync($parcel_id, $parcel_status = null)
+    {
+        return $this->updateParcelByIdAsyncWithHttpInfo($parcel_id, $parcel_status)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateParcelByIdAsyncWithHttpInfo
+     *
+     * update Parcel status
+     *
+     * @param  string $parcel_id Parcel ID (required)
+     * @param  \GreenToHome\Model\ParcelStatus $parcel_status Parcel to be updated (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateParcelByIdAsyncWithHttpInfo($parcel_id, $parcel_status = null)
+    {
+        $returnType = '\GreenToHome\Model\ResolvedParcel';
+        $request = $this->updateParcelByIdRequest($parcel_id, $parcel_status);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateParcelById'
+     *
+     * @param  string $parcel_id Parcel ID (required)
+     * @param  \GreenToHome\Model\ParcelStatus $parcel_status Parcel to be updated (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateParcelByIdRequest($parcel_id, $parcel_status = null)
+    {
+
+        // verify the required parameter 'parcel_id' is set
+        if ($parcel_id === null || (is_array($parcel_id) && count($parcel_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $parcel_id when calling updateParcelById'
+            );
+        }
+
+
+        $resourcePath = '/company/parcels/parcel/{parcelId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($parcel_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'parcelId' . '}',
+                ObjectSerializer::toPathValue($parcel_id),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($parcel_status)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($parcel_status));
+            } else {
+                $httpBody = $parcel_status;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('key');
+        if ($apiKey !== null) {
+            $queryParams['key'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

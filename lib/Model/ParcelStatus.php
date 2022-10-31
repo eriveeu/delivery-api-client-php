@@ -1,6 +1,6 @@
 <?php
 /**
- * Parcel
+ * ParcelStatus
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \GreenToHome\ObjectSerializer;
 
 /**
- * Parcel Class Doc Comment
+ * ParcelStatus Class Doc Comment
  *
  * @category Class
  * @package  GreenToHome
@@ -41,7 +41,7 @@ use \GreenToHome\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
+class ParcelStatus implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Parcel';
+    protected static $openAPIModelName = 'ParcelStatus';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +58,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'external_reference' => 'string',
-        'comment' => 'string',
-        'weight' => 'float',
-        'width' => 'float',
-        'lenght' => 'float',
-        'height' => 'float',
-        'packaging_units' => 'float',
-        'status' => 'string',
-        'to' => '\GreenToHome\Model\Customer'
+        'status' => 'string'
     ];
 
     /**
@@ -77,15 +69,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'external_reference' => null,
-        'comment' => null,
-        'weight' => 'double',
-        'width' => 'double',
-        'lenght' => 'double',
-        'height' => 'double',
-        'packaging_units' => 'integer',
-        'status' => null,
-        'to' => null
+        'status' => null
     ];
 
     /**
@@ -94,15 +78,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'external_reference' => false,
-		'comment' => false,
-		'weight' => false,
-		'width' => false,
-		'lenght' => false,
-		'height' => false,
-		'packaging_units' => false,
-		'status' => false,
-		'to' => false
+        'status' => false
     ];
 
     /**
@@ -181,15 +157,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'external_reference' => 'externalReference',
-        'comment' => 'comment',
-        'weight' => 'weight',
-        'width' => 'width',
-        'lenght' => 'lenght',
-        'height' => 'height',
-        'packaging_units' => 'packagingUnits',
-        'status' => 'status',
-        'to' => 'to'
+        'status' => 'status'
     ];
 
     /**
@@ -198,15 +166,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'external_reference' => 'setExternalReference',
-        'comment' => 'setComment',
-        'weight' => 'setWeight',
-        'width' => 'setWidth',
-        'lenght' => 'setLenght',
-        'height' => 'setHeight',
-        'packaging_units' => 'setPackagingUnits',
-        'status' => 'setStatus',
-        'to' => 'setTo'
+        'status' => 'setStatus'
     ];
 
     /**
@@ -215,15 +175,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'external_reference' => 'getExternalReference',
-        'comment' => 'getComment',
-        'weight' => 'getWeight',
-        'width' => 'getWidth',
-        'lenght' => 'getLenght',
-        'height' => 'getHeight',
-        'packaging_units' => 'getPackagingUnits',
-        'status' => 'getStatus',
-        'to' => 'getTo'
+        'status' => 'getStatus'
     ];
 
     /**
@@ -267,9 +219,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATUS_PREPARED_BY_SENDER = 'PreparedBySender';
     public const STATUS_ANNOUNCED = 'Announced';
-    public const STATUS_DELIVERED = 'Delivered';
 
     /**
      * Gets allowable values of the enum
@@ -279,9 +229,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_PREPARED_BY_SENDER,
             self::STATUS_ANNOUNCED,
-            self::STATUS_DELIVERED,
         ];
     }
 
@@ -300,15 +248,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('external_reference', $data ?? [], null);
-        $this->setIfExists('comment', $data ?? [], null);
-        $this->setIfExists('weight', $data ?? [], null);
-        $this->setIfExists('width', $data ?? [], null);
-        $this->setIfExists('lenght', $data ?? [], null);
-        $this->setIfExists('height', $data ?? [], null);
-        $this->setIfExists('packaging_units', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('to', $data ?? [], null);
     }
 
     /**
@@ -338,6 +278,9 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -363,212 +306,9 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets external_reference
-     *
-     * @return string|null
-     */
-    public function getExternalReference()
-    {
-        return $this->container['external_reference'];
-    }
-
-    /**
-     * Sets external_reference
-     *
-     * @param string|null $external_reference external_reference
-     *
-     * @return self
-     */
-    public function setExternalReference($external_reference)
-    {
-
-        if (is_null($external_reference)) {
-            throw new \InvalidArgumentException('non-nullable external_reference cannot be null');
-        }
-
-        $this->container['external_reference'] = $external_reference;
-
-        return $this;
-    }
-
-    /**
-     * Gets comment
-     *
-     * @return string|null
-     */
-    public function getComment()
-    {
-        return $this->container['comment'];
-    }
-
-    /**
-     * Sets comment
-     *
-     * @param string|null $comment comment
-     *
-     * @return self
-     */
-    public function setComment($comment)
-    {
-
-        if (is_null($comment)) {
-            throw new \InvalidArgumentException('non-nullable comment cannot be null');
-        }
-
-        $this->container['comment'] = $comment;
-
-        return $this;
-    }
-
-    /**
-     * Gets weight
-     *
-     * @return float|null
-     */
-    public function getWeight()
-    {
-        return $this->container['weight'];
-    }
-
-    /**
-     * Sets weight
-     *
-     * @param float|null $weight weight
-     *
-     * @return self
-     */
-    public function setWeight($weight)
-    {
-
-        if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
-        }
-
-        $this->container['weight'] = $weight;
-
-        return $this;
-    }
-
-    /**
-     * Gets width
-     *
-     * @return float|null
-     */
-    public function getWidth()
-    {
-        return $this->container['width'];
-    }
-
-    /**
-     * Sets width
-     *
-     * @param float|null $width width
-     *
-     * @return self
-     */
-    public function setWidth($width)
-    {
-
-        if (is_null($width)) {
-            throw new \InvalidArgumentException('non-nullable width cannot be null');
-        }
-
-        $this->container['width'] = $width;
-
-        return $this;
-    }
-
-    /**
-     * Gets lenght
-     *
-     * @return float|null
-     */
-    public function getLenght()
-    {
-        return $this->container['lenght'];
-    }
-
-    /**
-     * Sets lenght
-     *
-     * @param float|null $lenght lenght
-     *
-     * @return self
-     */
-    public function setLenght($lenght)
-    {
-
-        if (is_null($lenght)) {
-            throw new \InvalidArgumentException('non-nullable lenght cannot be null');
-        }
-
-        $this->container['lenght'] = $lenght;
-
-        return $this;
-    }
-
-    /**
-     * Gets height
-     *
-     * @return float|null
-     */
-    public function getHeight()
-    {
-        return $this->container['height'];
-    }
-
-    /**
-     * Sets height
-     *
-     * @param float|null $height height
-     *
-     * @return self
-     */
-    public function setHeight($height)
-    {
-
-        if (is_null($height)) {
-            throw new \InvalidArgumentException('non-nullable height cannot be null');
-        }
-
-        $this->container['height'] = $height;
-
-        return $this;
-    }
-
-    /**
-     * Gets packaging_units
-     *
-     * @return float|null
-     */
-    public function getPackagingUnits()
-    {
-        return $this->container['packaging_units'];
-    }
-
-    /**
-     * Sets packaging_units
-     *
-     * @param float|null $packaging_units packaging_units
-     *
-     * @return self
-     */
-    public function setPackagingUnits($packaging_units)
-    {
-
-        if (is_null($packaging_units)) {
-            throw new \InvalidArgumentException('non-nullable packaging_units cannot be null');
-        }
-
-        $this->container['packaging_units'] = $packaging_units;
-
-        return $this;
-    }
-
-    /**
      * Gets status
      *
-     * @return string|null
+     * @return string
      */
     public function getStatus()
     {
@@ -578,14 +318,14 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string $status status
      *
      * @return self
      */
     public function setStatus($status)
     {
         $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($status) && !in_array($status, $allowedValues, true)) {
+        if (!in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'status', must be one of '%s'",
@@ -600,35 +340,6 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets to
-     *
-     * @return \GreenToHome\Model\Customer|null
-     */
-    public function getTo()
-    {
-        return $this->container['to'];
-    }
-
-    /**
-     * Sets to
-     *
-     * @param \GreenToHome\Model\Customer|null $to to
-     *
-     * @return self
-     */
-    public function setTo($to)
-    {
-
-        if (is_null($to)) {
-            throw new \InvalidArgumentException('non-nullable to cannot be null');
-        }
-
-        $this->container['to'] = $to;
 
         return $this;
     }

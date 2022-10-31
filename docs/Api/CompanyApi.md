@@ -4,9 +4,72 @@ All URIs are relative to https://dev.greentohome.at/api/v1, except if the operat
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**deleteParcelById()**](CompanyApi.md#deleteParcelById) | **DELETE** /company/parcels/parcel/{parcelId} | delete Parcel |
 | [**getParcelById()**](CompanyApi.md#getParcelById) | **GET** /company/parcels/parcel/{parcelId} | returns Parcel details by id |
 | [**submitParcel()**](CompanyApi.md#submitParcel) | **POST** /company/parcels/parcel | submit new Parcel |
+| [**updateParcelById()**](CompanyApi.md#updateParcelById) | **PATCH** /company/parcels/parcel/{parcelId} | update Parcel status |
 
+
+## `deleteParcelById()`
+
+```php
+deleteParcelById($parcel_id)
+```
+
+delete Parcel
+
+Delete Parcel
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: clientId
+$config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+
+
+$apiInstance = new GreenToHome\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$parcel_id = 'parcel_id_example'; // string | Parcel ID
+
+try {
+    $apiInstance->deleteParcelById($parcel_id);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->deleteParcelById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **parcel_id** | **string**| Parcel ID | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[clientId](../../README.md#clientId)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getParcelById()`
 
@@ -118,6 +181,70 @@ try {
 ### Return type
 
 [**\GreenToHome\Model\CreatedParcel**](../Model/CreatedParcel.md)
+
+### Authorization
+
+[clientId](../../README.md#clientId)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateParcelById()`
+
+```php
+updateParcelById($parcel_id, $parcel_status): \GreenToHome\Model\ResolvedParcel
+```
+
+update Parcel status
+
+Update Parcel Status
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: clientId
+$config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+
+
+$apiInstance = new GreenToHome\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$parcel_id = 'parcel_id_example'; // string | Parcel ID
+$parcel_status = new \GreenToHome\Model\ParcelStatus(); // \GreenToHome\Model\ParcelStatus | Parcel to be updated
+
+try {
+    $result = $apiInstance->updateParcelById($parcel_id, $parcel_status);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->updateParcelById: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **parcel_id** | **string**| Parcel ID | |
+| **parcel_status** | [**\GreenToHome\Model\ParcelStatus**](../Model/ParcelStatus.md)| Parcel to be updated | [optional] |
+
+### Return type
+
+[**\GreenToHome\Model\ResolvedParcel**](../Model/ResolvedParcel.md)
 
 ### Authorization
 

@@ -1,6 +1,5 @@
 # GREEN TO HOME API Client (PHP)
 
-
 ## Installation & Usage
 
 ### Requirements
@@ -79,8 +78,10 @@ All URIs are relative to *https://dev.greentohome.at/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*CompanyApi* | [**deleteParcelById**](docs/Api/CompanyApi.md#deleteparcelbyid) | **DELETE** /company/parcels/parcel/{parcelId} | delete Parcel
 *CompanyApi* | [**getParcelById**](docs/Api/CompanyApi.md#getparcelbyid) | **GET** /company/parcels/parcel/{parcelId} | returns Parcel details by id
 *CompanyApi* | [**submitParcel**](docs/Api/CompanyApi.md#submitparcel) | **POST** /company/parcels/parcel | submit new Parcel
+*CompanyApi* | [**updateParcelById**](docs/Api/CompanyApi.md#updateparcelbyid) | **PATCH** /company/parcels/parcel/{parcelId} | update Parcel status
 
 ## Models
 
@@ -89,6 +90,7 @@ Class | Method | HTTP request | Description
 - [Customer](docs/Model/Customer.md)
 - [Parcel](docs/Model/Parcel.md)
 - [ParcelHistory](docs/Model/ParcelHistory.md)
+- [ParcelStatus](docs/Model/ParcelStatus.md)
 - [ResolvedAddress](docs/Model/ResolvedAddress.md)
 - [ResolvedParcel](docs/Model/ResolvedParcel.md)
 
