@@ -92,8 +92,8 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
 		'city' => false,
 		'zip' => false,
 		'street' => false,
-		'street_number' => false,
-		'comment' => false
+		'street_number' => true,
+		'comment' => true
     ];
 
     /**
@@ -499,7 +499,14 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setStreetNumber($street_number)
     {
         if (is_null($street_number)) {
-            throw new \InvalidArgumentException('non-nullable street_number cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'street_number');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('street_number', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['street_number'] = $street_number;
 
@@ -526,7 +533,14 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setComment($comment)
     {
         if (is_null($comment)) {
-            throw new \InvalidArgumentException('non-nullable comment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'comment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('comment', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['comment'] = $comment;
 
