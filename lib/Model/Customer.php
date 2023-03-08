@@ -418,9 +418,6 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setPhone($phone)
     {
-        if (is_null($phone)) {
-            throw new \InvalidArgumentException('non-nullable phone cannot be null');
-        }
         $this->container['phone'] = $phone;
 
         return $this;
