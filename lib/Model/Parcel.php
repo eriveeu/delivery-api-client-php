@@ -62,7 +62,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'string',
         'weight' => 'float',
         'width' => 'float',
-        'lenght' => 'float',
+        'length' => 'float',
         'height' => 'float',
         'packaging_units' => 'float',
         'status' => 'string',
@@ -81,7 +81,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => null,
         'weight' => 'double',
         'width' => 'double',
-        'lenght' => 'double',
+        'length' => 'double',
         'height' => 'double',
         'packaging_units' => 'integer',
         'status' => null,
@@ -98,7 +98,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
 		'comment' => false,
 		'weight' => false,
 		'width' => false,
-		'lenght' => false,
+		'length' => false,
 		'height' => false,
 		'packaging_units' => false,
 		'status' => false,
@@ -195,7 +195,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'comment',
         'weight' => 'weight',
         'width' => 'width',
-        'lenght' => 'lenght',
+        'length' => 'length',
         'height' => 'height',
         'packaging_units' => 'packagingUnits',
         'status' => 'status',
@@ -212,7 +212,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'setComment',
         'weight' => 'setWeight',
         'width' => 'setWidth',
-        'lenght' => 'setLenght',
+        'length' => 'setLength',
         'height' => 'setHeight',
         'packaging_units' => 'setPackagingUnits',
         'status' => 'setStatus',
@@ -229,7 +229,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'getComment',
         'weight' => 'getWeight',
         'width' => 'getWidth',
-        'lenght' => 'getLenght',
+        'length' => 'getLength',
         'height' => 'getHeight',
         'packaging_units' => 'getPackagingUnits',
         'status' => 'getStatus',
@@ -314,7 +314,7 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('comment', $data ?? [], null);
         $this->setIfExists('weight', $data ?? [], null);
         $this->setIfExists('width', $data ?? [], null);
-        $this->setIfExists('lenght', $data ?? [], null);
+        $this->setIfExists('length', $data ?? [], null);
         $this->setIfExists('height', $data ?? [], null);
         $this->setIfExists('packaging_units', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
@@ -489,30 +489,30 @@ class Parcel implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets lenght
+     * Gets length
      *
      * @return float|null
      */
-    public function getLenght()
+    public function getLength()
     {
-        return $this->container['lenght'];
+        return $this->container['length'];
     }
 
     /**
-     * Sets lenght
+     * Sets length
      *
-     * @param float|null $lenght lenght
+     * @param float|null $length length
      *
      * @return self
      */
-    public function setLenght($lenght)
+    public function setLength($length)
     {
 
-        if (is_null($lenght)) {
-            throw new \InvalidArgumentException('non-nullable lenght cannot be null');
+        if (is_null($length)) {
+            throw new \InvalidArgumentException('non-nullable length cannot be null');
         }
 
-        $this->container['lenght'] = $lenght;
+        $this->container['length'] = $length;
 
         return $this;
     }

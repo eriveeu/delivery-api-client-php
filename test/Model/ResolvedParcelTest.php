@@ -126,9 +126,9 @@ class ResolvedParcelTest extends TestCase
     }
 
     /**
-     * Test attribute "lenght"
+     * Test attribute "length"
      */
-    public function testPropertyLenght()
+    public function testPropertyLength()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
