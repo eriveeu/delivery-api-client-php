@@ -1,13 +1,13 @@
-# Address
+# # Address
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**country** | **string** |  | [optional]
-**city** | **string** |  | [optional]
-**zip** | **string** |  | [optional]
-**street** | **string** |  | [optional]
+**country** | **string** |  |
+**city** | **string** |  |
+**zip** | **string** |  |
+**street** | **string** |  |
 **street_number** | **string** |  | [optional]
 **comment** | **string** |  | [optional]
 
