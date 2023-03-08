@@ -63,7 +63,7 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'string',
         'weight' => 'float',
         'width' => 'float',
-        'lenght' => 'float',
+        'length' => 'float',
         'height' => 'float',
         'packaging_units' => 'float',
         'status' => 'string',
@@ -86,7 +86,7 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => null,
         'weight' => 'double',
         'width' => 'double',
-        'lenght' => 'double',
+        'length' => 'double',
         'height' => 'double',
         'packaging_units' => 'integer',
         'status' => null,
@@ -103,13 +103,13 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'id' => false,
-		'external_reference' => false,
-		'comment' => false,
-		'weight' => false,
-		'width' => false,
-		'lenght' => false,
-		'height' => false,
-		'packaging_units' => false,
+		'external_reference' => true,
+		'comment' => true,
+		'weight' => true,
+		'width' => true,
+		'length' => true,
+		'height' => true,
+		'packaging_units' => true,
 		'status' => false,
 		'status_history' => false,
 		'to' => false,
@@ -208,7 +208,7 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'comment',
         'weight' => 'weight',
         'width' => 'width',
-        'lenght' => 'lenght',
+        'length' => 'length',
         'height' => 'height',
         'packaging_units' => 'packagingUnits',
         'status' => 'status',
@@ -229,7 +229,7 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'setComment',
         'weight' => 'setWeight',
         'width' => 'setWidth',
-        'lenght' => 'setLenght',
+        'length' => 'setLength',
         'height' => 'setHeight',
         'packaging_units' => 'setPackagingUnits',
         'status' => 'setStatus',
@@ -250,7 +250,7 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
         'comment' => 'getComment',
         'weight' => 'getWeight',
         'width' => 'getWidth',
-        'lenght' => 'getLenght',
+        'length' => 'getLength',
         'height' => 'getHeight',
         'packaging_units' => 'getPackagingUnits',
         'status' => 'getStatus',
@@ -339,7 +339,7 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('comment', $data ?? [], null);
         $this->setIfExists('weight', $data ?? [], null);
         $this->setIfExists('width', $data ?? [], null);
-        $this->setIfExists('lenght', $data ?? [], null);
+        $this->setIfExists('length', $data ?? [], null);
         $this->setIfExists('height', $data ?? [], null);
         $this->setIfExists('packaging_units', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
@@ -450,7 +450,14 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExternalReference($external_reference)
     {
         if (is_null($external_reference)) {
-            throw new \InvalidArgumentException('non-nullable external_reference cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'external_reference');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('external_reference', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['external_reference'] = $external_reference;
 
@@ -477,7 +484,14 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setComment($comment)
     {
         if (is_null($comment)) {
-            throw new \InvalidArgumentException('non-nullable comment cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'comment');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('comment', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['comment'] = $comment;
 
@@ -504,7 +518,14 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWeight($weight)
     {
         if (is_null($weight)) {
-            throw new \InvalidArgumentException('non-nullable weight cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'weight');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('weight', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['weight'] = $weight;
 
@@ -531,7 +552,14 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setWidth($width)
     {
         if (is_null($width)) {
-            throw new \InvalidArgumentException('non-nullable width cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'width');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('width', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['width'] = $width;
 
@@ -539,28 +567,35 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets lenght
+     * Gets length
      *
      * @return float|null
      */
-    public function getLenght()
+    public function getLength()
     {
-        return $this->container['lenght'];
+        return $this->container['length'];
     }
 
     /**
-     * Sets lenght
+     * Sets length
      *
-     * @param float|null $lenght lenght
+     * @param float|null $length length
      *
      * @return self
      */
-    public function setLenght($lenght)
+    public function setLength($length)
     {
-        if (is_null($lenght)) {
-            throw new \InvalidArgumentException('non-nullable lenght cannot be null');
+        if (is_null($length)) {
+            array_push($this->openAPINullablesSetToNull, 'length');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('length', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['lenght'] = $lenght;
+        $this->container['length'] = $length;
 
         return $this;
     }
@@ -585,7 +620,14 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setHeight($height)
     {
         if (is_null($height)) {
-            throw new \InvalidArgumentException('non-nullable height cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'height');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('height', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['height'] = $height;
 
@@ -612,7 +654,14 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPackagingUnits($packaging_units)
     {
         if (is_null($packaging_units)) {
-            throw new \InvalidArgumentException('non-nullable packaging_units cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'packaging_units');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('packaging_units', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['packaging_units'] = $packaging_units;
 
