@@ -1,4 +1,4 @@
-# ResolvedParcel
+# # ResolvedParcel
 
 ## Properties
 
@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **comment** | **string** |  | [optional]
 **weight** | **float** |  | [optional]
 **width** | **float** |  | [optional]
-**lenght** | **float** |  | [optional]
+**length** | **float** |  | [optional]
 **height** | **float** |  | [optional]
 **packaging_units** | **float** |  | [optional]
 **status** | **string** |  | [optional]
