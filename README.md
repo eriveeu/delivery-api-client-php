@@ -1,10 +1,14 @@
-# GREEN TO HOME API Client (PHP)
+# ERIVE.delivery API Client (PHP)
+
+ERIVE.delivery (formerly GREEN TO HOME) API
+
 
 ## Installation & Usage
 
 ### Requirements
 
 PHP 7.4 and later.
+Should also work with PHP 8.0.
 
 ### Composer
 
@@ -15,11 +19,11 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/newmobilityenterprise/greentohome-apiclient-php.git"
+      "url": "https://github.com/eriveeu/delivery-api-client-php.git"
     }
   ],
   "require": {
-    "newmobilityenterprise/gth-api-client": "*@dev"
+    "eriveeu/delivery-api-client": "*@dev"
   }
 }
 ```
@@ -50,12 +54,12 @@ if (file_exists(dirname(__DIR__) . '/vendor/autoload.php')) {
 
 
 // Configure API key authorization: clientId
-$config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+$config = Erive\Delivery\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+// $config = Erive\Delivery\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
 
 
-$apiInstance = new GreenToHome\Api\CompanyApi(
+$apiInstance = new Erive\Delivery\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -96,6 +100,7 @@ Class | Method | HTTP request | Description
 
 ## Authorization
 
+Authentication schemes defined for the API:
 ### clientId
 
 - **Type**: API key
@@ -114,7 +119,7 @@ vendor/bin/phpunit
 
 ## Author
 
-developers@nm-e.com
+developers@erive.eu
 
 ## About this package
 

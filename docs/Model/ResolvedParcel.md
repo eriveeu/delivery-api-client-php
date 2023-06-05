@@ -13,9 +13,9 @@ Name | Type | Description | Notes
 **height** | **float** |  | [optional]
 **packaging_units** | **float** |  | [optional]
 **status** | **string** |  | [optional]
-**status_history** | [**\GreenToHome\Model\ParcelHistory[]**](ParcelHistory.md) |  | [optional]
-**to** | [**\GreenToHome\Model\ResolvedAddress**](ResolvedAddress.md) |  | [optional]
-**from** | [**\GreenToHome\Model\ResolvedAddress**](ResolvedAddress.md) |  | [optional]
+**status_history** | [**\Erive\Delivery\Model\ParcelHistory[]**](ParcelHistory.md) |  | [optional]
+**to** | [**\Erive\Delivery\Model\ResolvedAddress**](ResolvedAddress.md) |  | [optional]
+**from** | [**\Erive\Delivery\Model\ResolvedAddress**](ResolvedAddress.md) |  | [optional]
 **label_url** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1,4 +1,4 @@
-# GreenToHome\CompanyApi
+# Erive\Delivery\CompanyApi
 
 All URIs are relative to https://dev.greentohome.at/api/v1, except if the operation defines another base path.
 
@@ -28,12 +28,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: clientId
-$config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+$config = Erive\Delivery\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+// $config = Erive\Delivery\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
 
 
-$apiInstance = new GreenToHome\Api\CompanyApi(
+$apiInstance = new Erive\Delivery\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -74,7 +74,7 @@ void (empty response body)
 ## `getParcelById()`
 
 ```php
-getParcelById($parcel_id): \GreenToHome\Model\ResolvedParcel
+getParcelById($parcel_id): \Erive\Delivery\Model\ResolvedParcel
 ```
 
 returns Parcel details by id
@@ -89,12 +89,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: clientId
-$config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+$config = Erive\Delivery\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+// $config = Erive\Delivery\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
 
 
-$apiInstance = new GreenToHome\Api\CompanyApi(
+$apiInstance = new Erive\Delivery\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -118,7 +118,7 @@ try {
 
 ### Return type
 
-[**\GreenToHome\Model\ResolvedParcel**](../Model/ResolvedParcel.md)
+[**\Erive\Delivery\Model\ResolvedParcel**](../Model/ResolvedParcel.md)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ try {
 ## `submitParcel()`
 
 ```php
-submitParcel($parcel): \GreenToHome\Model\CreatedParcel
+submitParcel($parcel): \Erive\Delivery\Model\CreatedParcel
 ```
 
 submit new Parcel
@@ -151,18 +151,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: clientId
-$config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+$config = Erive\Delivery\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+// $config = Erive\Delivery\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
 
 
-$apiInstance = new GreenToHome\Api\CompanyApi(
+$apiInstance = new Erive\Delivery\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$parcel = new \GreenToHome\Model\Parcel(); // \GreenToHome\Model\Parcel | Parcel to submit
+$parcel = new \Erive\Delivery\Model\Parcel(); // \Erive\Delivery\Model\Parcel | Parcel to submit
 
 try {
     $result = $apiInstance->submitParcel($parcel);
@@ -176,11 +176,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **parcel** | [**\GreenToHome\Model\Parcel**](../Model/Parcel.md)| Parcel to submit | [optional] |
+| **parcel** | [**\Erive\Delivery\Model\Parcel**](../Model/Parcel.md)| Parcel to submit | [optional] |
 
 ### Return type
 
-[**\GreenToHome\Model\CreatedParcel**](../Model/CreatedParcel.md)
+[**\Erive\Delivery\Model\CreatedParcel**](../Model/CreatedParcel.md)
 
 ### Authorization
 
@@ -198,7 +198,7 @@ try {
 ## `updateParcelById()`
 
 ```php
-updateParcelById($parcel_id, $parcel_status): \GreenToHome\Model\ResolvedParcel
+updateParcelById($parcel_id, $parcel_status): \Erive\Delivery\Model\ResolvedParcel
 ```
 
 update Parcel status
@@ -213,19 +213,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: clientId
-$config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
+$config = Erive\Delivery\Configuration::getDefaultConfiguration()->setApiKey('key', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = GreenToHome\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
+// $config = Erive\Delivery\Configuration::getDefaultConfiguration()->setApiKeyPrefix('key', 'Bearer');
 
 
-$apiInstance = new GreenToHome\Api\CompanyApi(
+$apiInstance = new Erive\Delivery\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $parcel_id = 'parcel_id_example'; // string | Parcel ID
-$parcel_status = new \GreenToHome\Model\ParcelStatus(); // \GreenToHome\Model\ParcelStatus | Parcel to be updated
+$parcel_status = new \Erive\Delivery\Model\ParcelStatus(); // \Erive\Delivery\Model\ParcelStatus | Parcel to be updated
 
 try {
     $result = $apiInstance->updateParcelById($parcel_id, $parcel_status);
@@ -240,11 +240,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **parcel_id** | **string**| Parcel ID | |
-| **parcel_status** | [**\GreenToHome\Model\ParcelStatus**](../Model/ParcelStatus.md)| Parcel to be updated | [optional] |
+| **parcel_status** | [**\Erive\Delivery\Model\ParcelStatus**](../Model/ParcelStatus.md)| Parcel to be updated | [optional] |
 
 ### Return type
 
-[**\GreenToHome\Model\ResolvedParcel**](../Model/ResolvedParcel.md)
+[**\Erive\Delivery\Model\ResolvedParcel**](../Model/ResolvedParcel.md)
 
 ### Authorization
 

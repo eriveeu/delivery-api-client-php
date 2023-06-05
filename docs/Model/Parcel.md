@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **height** | **float** |  | [optional]
 **packaging_units** | **float** |  | [optional]
 **status** | **string** |  | [optional]
-**to** | [**\GreenToHome\Model\Customer**](Customer.md) |  | [optional]
+**to** | [**\Erive\Delivery\Model\Customer**](Customer.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

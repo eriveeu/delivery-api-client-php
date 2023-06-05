@@ -1,12 +1,21 @@
 {
-    "name": "newmobilityenterprise/gth-api-client",
-    "description": "GREEN TO HOME API Client",
-    "homepage": "https://www.greentohome.at",
-    "license": "proprietary",
+    "description": "ERIVE.delivery (formerly GREEN TO HOME) API",
+    "name": "eriveeu/delivery-api-client",
+    "keywords": [
+        "openapitools",
+        "openapi-generator",
+        "openapi",
+        "php",
+        "sdk",
+        "rest",
+        "api"
+    ],
+    "homepage": "https://openapi-generator.tech",
+    "license": "unlicense",
     "authors": [
         {
-            "name": "NME - New Mobility Enterprise GmbH",
-            "homepage": "https://nm-e.com"
+            "name": "ERIVE GmbH",
+            "homepage": "https://www.erive.eu"
         }
     ],
     "require": {
@@ -22,9 +31,9 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "GreenToHome\\" : "lib/" }
+        "psr-4": { "Erive\\Delivery\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "GreenToHome\\Test\\" : "test/" }
+        "psr-4": { "Erive\\Delivery\\Test\\" : "test/" }
     }
 }
