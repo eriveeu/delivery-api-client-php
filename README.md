@@ -7,8 +7,8 @@ ERIVE.delivery (formerly GREEN TO HOME) API
 
 ### Requirements
 
-PHP 7.4 and later.
-Should also work with PHP 8.0.
+PHP >= 7.4
+Tested in 8.1
 
 ### Composer
 
