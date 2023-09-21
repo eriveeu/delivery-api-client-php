@@ -477,11 +477,11 @@ class Configuration
                 "description" => "ERIVE.delivery DEV Server",
             ],
             [
-                "url" => "https://stg.greentohome.at/api/v1",
+                "url" => "https://stage.greentohome.at/api/v1",
                 "description" => "ERIVE.delivery STG Server",
             ],
             [
-                "url" => "https://www.greentohome.at/api/v1",
+                "url" => "https://www.erive.delivery/api/v1",
                 "description" => "ERIVE.delivery PROD Server",
             ]
         ];
