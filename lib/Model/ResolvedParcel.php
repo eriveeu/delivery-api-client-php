@@ -304,6 +304,16 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
     public const STATUS_PREPARED_BY_SENDER = 'PreparedBySender';
     public const STATUS_ANNOUNCED = 'Announced';
     public const STATUS_DELIVERED = 'Delivered';
+    public const STATUS_LOADED_INTO_VEHICLE = "LoadedIntoVehicle";
+    public const STATUS_ANNOUNCED_RETURN = "AnnouncedReturn";
+    public const STATUS_DELIVERY_ATTEMPTED = "DeliveryAttempted";
+    public const STATUS_RECEIVED = "Received";
+    public const STATUS_ARRIVED_AT_LOCATION = "ArrivedAtLocation";
+    public const STATUS_HANDED_TO_EXTERNAL = "HandedToExternal";
+    public const STATUS_RETURN_HANDED_TO_EXTERNAL = "ReturnHandedToExternal";
+    public const STATUS_RETURN_REQUESTED = "ReturnRequested";
+    public const STATUS_RETURN_CANCELED = "ReturnCanceled";
+    public const STATUS_NOT_DELIVERABLE = "NotDeliverable";
 
     /**
      * Gets allowable values of the enum
@@ -316,6 +326,16 @@ class ResolvedParcel implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_PREPARED_BY_SENDER,
             self::STATUS_ANNOUNCED,
             self::STATUS_DELIVERED,
+            self::STATUS_LOADED_INTO_VEHICLE,
+            self::STATUS_ANNOUNCED_RETURN,
+            self::STATUS_DELIVERY_ATTEMPTED,
+            self::STATUS_RECEIVED,
+            self::STATUS_ARRIVED_AT_LOCATION,
+            self::STATUS_HANDED_TO_EXTERNAL,
+            self::STATUS_RETURN_HANDED_TO_EXTERNAL,
+            self::STATUS_RETURN_REQUESTED,
+            self::STATUS_RETURN_CANCELED,
+            self::STATUS_NOT_DELIVERABLE,
         ];
     }
 
